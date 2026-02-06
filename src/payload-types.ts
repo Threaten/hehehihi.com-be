@@ -190,7 +190,22 @@ export interface Tenant {
    * Used for url paths, example: /tenant-slug/page-slug
    */
   slug: string;
-  ' branchName': string;
+  aboutus?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  branchName: string;
   menu?: (string | null) | Media;
   logo?: (string | null) | Media;
   address?: string | null;
@@ -461,7 +476,8 @@ export interface TenantsSelect<T extends boolean = true> {
   name?: T;
   domain?: T;
   slug?: T;
-  ' branchName'?: T;
+  aboutus?: T;
+  branchName?: T;
   menu?: T;
   logo?: T;
   address?: T;
