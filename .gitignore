@@ -3,4 +3,9 @@ dist
 node_modules
 package-lock.json
 .env
-.next
+.next/
+# Next.js build output
+.next/
+
+# Dependencies
+.pnpm-store
