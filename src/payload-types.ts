@@ -74,6 +74,7 @@ export interface Config {
     media: Media;
     'contact-messages': ContactMessage;
     gallery: Gallery;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-folders': FolderInterface;
     'payload-locked-documents': PayloadLockedDocument;
@@ -97,6 +98,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -223,6 +225,10 @@ export interface Tenant {
         id?: string | null;
       }[]
     | null;
+  facebook?: string | null;
+  instagram?: string | null;
+  tiktok?: string | null;
+  youtube?: string | null;
   /**
    * If checked, logging in is not required to read. Useful for building public pages.
    */
@@ -340,6 +346,18 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  tenant?: (string | null) | Tenant;
+  title?: string | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -389,6 +407,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'gallery';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null)
     | ({
         relationTo: 'payload-folders';
@@ -495,6 +517,10 @@ export interface TenantsSelect<T extends boolean = true> {
         src?: T;
         id?: T;
       };
+  facebook?: T;
+  instagram?: T;
+  tiktok?: T;
+  youtube?: T;
   allowPublicRead?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -565,6 +591,17 @@ export interface GallerySelect<T extends boolean = true> {
   image?: T;
   caption?: T;
   branch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  tenant?: T;
+  title?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

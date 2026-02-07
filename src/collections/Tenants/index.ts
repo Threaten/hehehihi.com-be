@@ -109,6 +109,11 @@ export const Tenants: CollectionConfig = {
         { name: "src", type: "upload", relationTo: "media", required: true },
       ],
     },
+    { name: "facebook", type: "text", required: false },
+    { name: "instagram", type: "text", required: false },
+    { name: "tiktok", type: "text", required: false },
+    { name: "youtube", type: "text", required: false },
+
     {
       name: "allowPublicRead",
       type: "checkbox",

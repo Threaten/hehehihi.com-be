@@ -11,7 +11,6 @@ import { multiTenantPlugin } from "@payloadcms/plugin-multi-tenant";
 import { isSuperAdmin } from "./access/isSuperAdmin";
 import type { Config } from "./payload-types";
 import { getUserTenantIDs } from "./utilities/getUserTenantIDs";
-import { seed } from "./seed";
 import { Reservations } from "./collections/Reservations";
 import { ContactMessages } from "./collections/ContactMessages";
 
@@ -19,6 +18,7 @@ import { Customers } from "./collections/Customers";
 import Media from "./collections/Media";
 import HomeInforamtion from "./collections/HomeInformation";
 import { Gallery } from "./collections/Gallery";
+import { Pages } from "./collections/Pages";
 import { Settings } from "./globals/Settings";
 
 const filename = fileURLToPath(import.meta.url);
@@ -54,6 +54,7 @@ export default buildConfig({
     Media,
     ContactMessages,
     Gallery,
+    Pages,
   ],
   globals: [HomeInforamtion, Settings],
   db: mongooseAdapter({
@@ -64,11 +65,7 @@ export default buildConfig({
   //     connectionString: process.env.POSTGRES_URL,
   //   },
   // }),
-  onInit: async (args) => {
-    if (process.env.SEED_DB) {
-      await seed(args);
-    }
-  },
+  onInit: async (args) => {},
   editor: lexicalEditor({}),
 
   graphQL: {
