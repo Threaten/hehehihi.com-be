@@ -71,6 +71,20 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(dirname, "generated-schema.graphql"),
   },
+  cors: [
+    "http://localhost:3001",
+    "http://hehehihi.com",
+    "https://hehehihi.com",
+    "http://*.hehehihi.com",
+    "https://*.hehehihi.com",
+  ],
+  csrf: [
+    "http://localhost:3001",
+    "http://hehehihi.com",
+    "https://hehehihi.com",
+    "http://*.hehehihi.com",
+    "https://*.hehehihi.com",
+  ],
   secret: process.env.PAYLOAD_SECRET as string,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

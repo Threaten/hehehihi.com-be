@@ -48,6 +48,20 @@ export const Tenants: CollectionConfig = {
       required: true,
     },
     {
+      name: "shortAboutCollages",
+      type: "array",
+      maxRows: 7,
+      minRows: 7,
+      fields: [
+        {
+          name: "image",
+          type: "upload",
+          relationTo: "media",
+          required: true,
+        },
+      ],
+    },
+    {
       name: "aboutus",
       type: "richText",
       editor: lexicalEditor({
