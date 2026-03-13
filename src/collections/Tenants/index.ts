@@ -52,6 +52,7 @@ export const Tenants: CollectionConfig = {
       type: "array",
       maxRows: 7,
       minRows: 7,
+
       fields: [
         {
           name: "image",
@@ -60,6 +61,12 @@ export const Tenants: CollectionConfig = {
           required: true,
         },
       ],
+    },
+    {
+      name: "aboutusHero",
+      type: "upload",
+      relationTo: "media",
+      required: true,
     },
     {
       name: "aboutus",

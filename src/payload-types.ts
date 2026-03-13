@@ -192,6 +192,12 @@ export interface Tenant {
    * Used for url paths, example: /tenant-slug/page-slug
    */
   slug: string;
+  shortAboutCollages?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
   aboutus?: {
     root: {
       type: string;
@@ -498,6 +504,12 @@ export interface TenantsSelect<T extends boolean = true> {
   name?: T;
   domain?: T;
   slug?: T;
+  shortAboutCollages?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   aboutus?: T;
   branchName?: T;
   menu?: T;
